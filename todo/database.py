@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 
-client = MongoClient(f"mongodb://127.0.0.1:27017/")
+from .settings import settings
+
+client = MongoClient(f"{settings.db_url}:{settings.db_port}/")
 db = client.lyteforge_db
 todo_collection = db.geo_todos
 

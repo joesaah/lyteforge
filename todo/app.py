@@ -6,9 +6,10 @@ from bson import ObjectId
 
 from .database import todo_collection
 from .models import LocationTask, TodoStatus
+from .settings import settings
 
 app = FastAPI(
-    title="LyteForge Todo App"
+    title=settings.app_name
 )
 
 @app.get(
@@ -97,6 +98,6 @@ def delete_task(task_id: str):
 def run():
     uvicorn.run(
         app,
-        host="127.0.0.1",
-        port="80",
+        host=settings.api_url,
+        port=settings.api_port,
     )
